@@ -1,0 +1,39 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="container-fluid">
+
+    <section class="login-block">
+        <div class="">
+            <div class="row">
+                <div class="col-md-4 login-sec container" style="float: none; margin: 0 auto;">
+                    <h2 class="text-center">Inscription</h2>
+                    <form action="{{ path('fos_user_registration_register') }}" method="POST">
+                        <div class="form-group" id="fos_user_registration_form">
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'|trans } }) }}
+                            {{ form_errors(form.email) }}
+
+                            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Nom de compte'|trans } }) }}
+                            {{ form_errors(form.username) }}
+
+                            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder': 'Mot de passe'|trans } }) }}
+                            {{ form_errors(form.plainPassword.first) }}
+
+                            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder': 'Confirmation du mot de passe'|trans } }) }}
+                            {{ form_errors(form.plainPassword.second) }}
+
+                            {{ form_rest(form) }}
+
+                        </div>
+                        <div>
+                            <input class="btn btn-login" type="submit" value="{{ 'Créer son compte'|trans }}">
+                        </div>
+                    </form>
+                <br>
+                    <div style="color: black; font-size: 0.8em;">Déjà inscrit ? <a href="{{ path('fos_user_security_login') }}"><input class="btn btn-login" type="button" value="se connecter"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>

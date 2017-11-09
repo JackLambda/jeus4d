@@ -1,0 +1,25 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+
+    <div class="container-fluid">
+
+        <section class="login-block">
+            <div class="">
+                <div class="row">
+                    <div class="col-md-4 login-sec container" style="float: none; margin: 0 auto;">
+                        <h2 class="text-center">Bravo</h2>
+                        <p style="color: black;">Ton compte a bien été créé</p>
+                        <a href="{{ path('fos_user_security_login') }}"><input class="btn btn-login" type="button" value="Se connecter"></a>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+{% endblock fos_user_content %}

@@ -1,0 +1,9 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:JouerController:piocher{% endblock %}
+
+{% block body %}
+<h1>Welcome to the JouerController:piocher page</h1>
+    Vous venez de piocher. En attente de l'autre joueur
+    <a href="{{ path('affiche_plateau', {partie: partie.id}) }}">Attendre l'autre joueur</a>
+{% endblock %}

@@ -1,0 +1,319 @@
+* {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+}
+
+body {
+/*    background: #4143A3;
+    !* For browsers that do not support gradients *!
+    background: -webkit-linear-gradient(left top, #1E1E45, #4143A3, #848FD8, #CFD5EE, #ECEDF9);
+    !* For Safari 5.1 to 6.0 *!
+    background: -o-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8, #CFD5EE, #ECEDF9);
+    !* For Opera 11.1 to 12.0 *!
+    background: -moz-linear-gradient(bottom right, #1E1E45, #4143A3, #848FD8, #CFD5EE, #ECEDF9);
+    !* For Firefox 3.6 to 15 *!
+    background: linear-gradient(to bottom right, #1E1E45, #4143A3, #848FD8, #CFD5EE, #ECEDF9);
+    !* Standard syntax *!
+    height: 100vh;
+    color: #fff;*/
+    position: relative;
+    width: 100%;
+    min-height: 1100px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background-image: url('../images/custom/bg-title-black2.png');
+    background-repeat:no-repeat;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+a {
+    text-decoration: none !important;
+    color: white !important;
+}
+
+.sidebar3 {
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 0px;
+}
+
+.logo {
+    float: left;
+}
+
+.logo > img {
+    box-shadow: 0 0 0 1px #848FD8, 0 0 0 5px #1E1E45, 0 0 0 6px #848FD8, -2px -2px 0 6px #00bcd4;
+    border: 1px;
+    border-radius: 100%;
+    padding: 5px;
+
+}
+
+.name {
+    float: right;
+    clear: right;
+    padding: 5px;
+    height: 74px;
+    vertical-align: middle;
+    padding-top: 20px;
+    text-align: right;
+}
+
+.name > p {
+    margin-bottom: 0px;
+}
+
+i {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+li {
+    list-style-type: none;
+    padding: 5px;
+    border-bottom: 1px solid #848FD8;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+.activebooks {
+    border: 1px solid #848FD8;
+    padding: 0px 10px;
+    margin-top: -2px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+.dropdown .fa-plus {
+    border: 1px solid #848FD8;
+    padding: 4px;
+    margin-top: -2px;
+    margin-right: 0px;
+}
+
+.list {
+    padding-left: 20px;
+}
+
+.dropdown {
+    margin-left: -15px;
+}
+
+.submenu > li {
+    display: list-item;
+    list-style-type: square;
+
+}
+
+.submenu {
+    padding-left: 12px;
+}
+
+.submenu > li:hover {
+    color: blue;
+}
+
+.category::before, .category::after, .submenu::after {
+    content: " ";
+    white-space: pre;
+}
+
+i.fa.fa-circle-thin {
+    color: #00ff74;
+}
+
+li:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    cursor: pointer;
+}
+
+.main-content {
+    text-align: right;
+}
+
+.main-content > p > a {
+    color: white;
+}
+
+.btn {
+    outline: 0;
+    border: none;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: inset 2px -3px rgba(0, 0, 0, 0.15);
+}
+
+.btn:focus {
+    outline: 0;
+    -webkit-outline: 0;
+    -moz-outline: 0;
+}
+
+.form-signin {
+    max-width: 280px;
+    padding: 15px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.form-signin .form-signin-heading, .form-signin {
+    margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: none;
+    border-left-style: solid;
+    border-color: #000;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top-style: none;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.form-signin-heading {
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+
+}
+
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.login-block {
+    float: left;
+    width: 100%;
+    padding: 50px 0;
+}
+
+.banner-sec {
+    background: url(https://static.pexels.com/photos/33972/pexels-photo.jpg) no-repeat left bottom;
+    background-size: cover;
+    min-height: 500px;
+    border-radius: 0 10px 10px 0;
+    padding: 0;
+}
+
+.container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner {
+    border-radius: 0 10px 10px 0;
+}
+
+.carousel-caption {
+    text-align: left;
+    left: 5%;
+}
+
+.login-sec {
+    padding: 50px 30px;
+    position: relative;
+}
+
+.login-sec .copy-text {
+    position: absolute;
+    width: 80%;
+    bottom: 20px;
+    font-size: 13px;
+    text-align: center;
+}
+
+.login-sec .copy-text i {
+    color: #FEB58A;
+}
+
+.login-sec .copy-text a {
+    color: #E36262;
+}
+
+.login-sec h2 {
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: 30px;
+    color: #DE6262;
+}
+
+.login-sec h2:after {
+    content: " ";
+    width: 100px;
+    height: 5px;
+    background: #FEB58A;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.btn-login {
+    background: #DE6262;
+    color: #fff;
+    font-weight: 600;
+}
+
+.banner-text {
+    width: 70%;
+    position: absolute;
+    bottom: 40px;
+    padding-left: 20px;
+}
+
+.banner-text h2 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.banner-text h2:after {
+    content: " ";
+    width: 100px;
+    height: 5px;
+    background: #FFF;
+    display: block;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.banner-text p {
+    color: #fff;
+}

@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+<head>
+    <title>Sidebar4</title>
+    <link media="all" type="text/css" rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 sidebar3">
+
+            <div class="logo">
+                <img src="{{ asset('images/user/userpp.png') }}" class="img-fluid" alt="Logo" style="max-width: 80px;">
+            </div>
+            <div class="name">
+                    <p>{{ app.user.username }}</p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-4 sidebar3">
+            <div class="left-navigation">
+                <ul>
+                    <li class="text-left"><i class="fa fa-plus" aria-hidden="true"></i><a href="{{ path('app_jouer_nouvellepartie') }}">Nouvelle partie</a></li>
+                    <li class="text-left"><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="{{ path('app_joueur_mesparties') }}">Vos parties en cours</a></li>
+                    <li class="text-left"><i class="fa fa-book" aria-hidden="true"></i><a href="https://drive.google.com/file/d/1PR7GgSX5pVTkSddp4zwofMvOo7QVVKx4/view">Découvrir les règles</a></li>
+                </ul>
+                <ul>
+                    <li class="text-left"><i class="fa fa-power-off" aria-hidden="true"></i><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8 main-content">
+            <!--<p>Refer comment section below, to understand how the dropdown menu works using a one-line Jquery</p>-->
+        </div>
+
+    </div>
+</div>
+
+{% else %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 col-sm-4 sidebar3">
+
+            <div class="logo">
+                <img src="{{ asset('images/user/userpp.png') }}" class="img-fluid" alt="Logo" style="max-width: 80px;">
+            </div>
+            <div class="name">
+                    <p>Guest</p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-sm-4 sidebar3">
+            <div class="left-navigation">
+                <ul>
+                        <li class="text-left"><i class="fa fa-user-plus" aria-hidden="true"></i><a href="{{ path('fos_user_registration_register') }}">Se créer un compte</a></li>
+                        <li class="text-left"><i class="fa fa-sign-in" aria-hidden="true"></i><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8 main-content">
+            <!--<p>Refer comment section below, to understand how the dropdown menu works using a one-line Jquery</p>-->
+        </div>
+
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
+
+{% block title %}Première page{% endblock %}
+        {% block stylesheets %}{% endblock %}
+

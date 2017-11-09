@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}" />
+        <link rel="stylesheet" href="{{ asset('js/jquery-ui-1.12.1/jquery-ui.min.css') }}" />
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://localhost:8888/s4d/web/app_dev.php/">Rob in Wood</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+                        <ul class="">
+                            <li><a href="{{ path('app_jouer_nouvellepartie') }}">Nouvelle partie</a></li>
+                            <li><a href="{{ path('app_joueur_mesparties') }}">Vos parties en cours</a></li>
+                        </ul>
+                    </li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
+                    {% else %}
+                        <li><a href="{{ path('fos_user_security_login') }}">Se connecter</a></li>
+                    {% endif %}
+                </ul>
+
+        </nav>
+
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
+        <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-ui-1.12.1/jquery-ui.js') }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

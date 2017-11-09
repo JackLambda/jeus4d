@@ -1,0 +1,240 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:JouerController:afficherPlateau{% endblock %}
+
+{% block stylesheets %}
+    <style>
+
+        .numero {
+            color: #cccccc;
+            font-weight: bold;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            height: 100%;
+            vertical-align: middle;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+
+    <div id="plateau">
+
+
+
+    <div class="container-fluid" id="body" style="float: none; margin: 0 auto;">
+        {% if partie.gagnant == true %}
+            <div class="container login-sec col-md-4">
+                <h2 class="text-center">La partie est terminée !</h2>
+                <div class="text-center" style="color: black;"><h5>le gagnant est : {{ partie.gagnant }}</h5></div><br>
+                <a class="btn btn-login" href="{{ path('homepage') }}">Retour au menu</a>
+            </div>
+            </div>
+
+        {% else %}
+            <h1>Partie en cours</h1>
+        <div id="col-12">
+            {#    <div class="bornes">
+                    {% for borne in partie.listeDesBornes %}
+                        <div class="borne">
+                            {% if borne.position == nomadversaire %}
+                            {{ tbornes[borne.id_borne].image }}
+                            {% else %}
+                            -
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>#}
+            <div class="row"> {# LE PLATEAU DU JOUEUR ADVERSAIRE #}
+                {% for i in 1..9 %}
+                <div class="col-1" style="padding-right: 5px; padding-left: 0px;">
+                    {% for carte_id in terrainadversaire['col'~i] %}
+
+                    {% if carte_id == 0 %}
+                    <div class="">
+                        <img src="{{ asset('images/libre2.png') }}" class="img-fluid">
+                        {% else %}
+                        <div class="{{ tcartes[carte_id].couleur.libelle }}">
+                            <img src="{{ asset('images/') }}{{ tcartes[carte_id].couleur.libelle }}/{{ tcartes[carte_id].image }}"
+                                 class="img-fluid">
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                    <div class="col-2 sidebar3">
+
+                        <div class="logo">
+                            <img src="{{ asset('images/user/userpp.png') }}" class="img-fluid" alt="Logo" style="max-width: 80px;">
+                        </div>
+                        <div class="name">
+                            <p>{{ adversaire.username }}</p>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row"> {# LA LISTE DES BORNES #}
+                {% for borne in partie.listeDesBornes %}
+                    <div class="col-1" style="padding-right: 5px; padding-left: 0px; padding-top: 3.5%;">
+                        {% if borne.position == 'neutre' %}
+                            {#{{ tbornes[borne.id_borne].image }}#}
+                            <p class="align-middle">
+                                <a href="{{ path('app_jouer_revendiquerborne', {borne:borne.id_borne, partie:partie.id}) }}"><img
+                                            src="{{ asset('images/bornes/') }}{{ tbornes[borne.id_borne].image }}.png"
+                                            class="img-fluid"></a></p>
+                        {% elseif borne.position == 'J1' %}
+                            <img src="{{ asset('images/bornes/') }}{{ tbornes[borne.id_borne].image }}j1.png"
+                                 class="img-fluid">
+                        {% elseif borne.position == 'J2' %}
+                            <img src="{{ asset('images/bornes/') }}{{ tbornes[borne.id_borne].image }}j2.png"
+                                 class="img-fluid">
+                        {% endif %}
+
+                    </div>
+                {% endfor %}
+
+                <div class="col-2">
+                    <a href="{{ path('jouer_piocher', {partie:partie.id}) }}"><img
+                                src="{{ asset('images/pioche.png') }}" class="img-fluid" style="width:60%"></a>
+                </div>
+            </div>
+            <br/>
+
+
+            <div class="row">
+                {% for i in 1..9 %}
+                    <div class="col-1" style="padding-right: 5px; padding-left: 0px;">
+                        {% for carte_id in terrainencours['col'~i] %}
+
+                            {% if carte_id == 0 %}
+                                <div class="carte {% if montour == true %}zonelibre{% endif %}" data-colonne="{{ i }}">
+                                    <img src="{{ asset('images/libre2.png') }}" class="img-fluid">
+                                </div>
+                            {% else %}
+                                <div class="carte {{ tcartes[carte_id].couleur.libelle }}">
+                                    <img src="{{ asset('images/') }}{{ tcartes[carte_id].couleur.libelle }}/{{ tcartes[carte_id].image }}"
+                                         class="img-fluid">
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="col-2 sidebar3">
+
+                    <div class="logo">
+                        <img src="{{ asset('images/user/userpp.png') }}" class="img-fluid" alt="Logo" style="max-width: 80px;">
+                    </div>
+                    <div class="name">
+                        <p>{{ app.user.username }}</p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+
+            {#            <div class="bornes">
+                            {% for borne in partie.listeDesBornes %}
+                                <div class="borne">
+                                    {% if borne.position == nomencours %}
+                                        {{ tbornes[borne.id_borne].image }}
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>#}
+            {% if montour == false %}
+                <br>
+                <div class="alert alert-danger col-4" style="margin: 0 auto;">En attente de l'autre joueur</div>
+                <br>
+            {% endif %}
+
+            <div class="row">
+                {% for carte_id in mainencours %}
+                    <div class="col-1 mescartes" data-carte="{{ carte_id }}"
+                         style="padding-right: 5px; padding-left: 0px;">
+                        <img src="{{ asset('images/') }}{{ tcartes[carte_id].couleur.libelle }}/{{ tcartes[carte_id].image }}"
+                             class="img-fluid">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% if partie.encours == 1 %}
+
+        {% if montour == false %}
+
+            <script>
+                setInterval(function () {
+                    console.log('tick');
+                    $.ajax({
+                        url: "{{ path('afficher_plateau2',{partie:partie.id}) }}",
+                        success:
+                            function (retour) {
+                                $('#body').html(retour);
+                                DragDrop();
+                            }
+                    });
+                }, 10000);
+            </script>
+        {% endif %}
+
+        {% if mainencours|length == 6 %}
+
+            <script>
+                $(function () {
+                    DragDrop();
+                });
+
+                function DragDrop(){
+                    $(".mescartes").draggable({
+                        containment: '#plateau',
+                        cursor: 'move',
+                        revert: true
+                    });
+                    $(".zonelibre").droppable({
+                        classes: {
+                            "ui-droppable-active": "ui-state-active",
+                            "ui-droppable-hover": "ui-state-hover"
+                        },
+                        drop: function (event, ui) {
+
+                            $(this).addClass("ui-state-highlight");
+
+                            ui.draggable.draggable('disable');
+                            $(this).droppable('disable');
+                            ui.draggable.position({
+                                of: $(this), my: 'left top', at: 'left top'
+                            });
+
+                            ui.draggable.draggable('option', 'revert', false);
+
+                            $.ajax({
+                                url: "{{ path('jouer_carte') }}",
+                                method: 'POST',
+                                data: {
+                                    colonne: $(this).data('colonne'),
+                                    carte: ui.draggable.data('carte'),
+                                    partie: {{ partie.id }}
+                                }
+                            })
+
+                        }
+                    });
+                }
+            </script>
+        {% endif %}
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Joueur:mesparties{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 sidebar3">
+
+                <div class="logo">
+                    <img src="{{ asset('images/user/userpp.png') }}" class="img-fluid" alt="Logo" style="max-width: 80px;">
+                </div>
+                <div class="name">
+                    <p>{{ app.user.username }}</p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <p class="text-left"><a class="btn btn-login" href="{{ path('homepage') }}">Retour au menu</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 sidebar3">
+                <div class="left-navigation">
+                    <p class="text-left">Partie en tant que Joueur 1</p>
+                    {% for partie in partieJ1 %}
+                    <ul>
+                        <li class="text-left"><i class="fa fa-book" aria-hidden="true"></i>Partie numéro {{ partie.id }}</li>
+                        <li class="text-left"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Votre adversaire est : {{ partie.joueur2.username }}</li>
+                        <li class="text-left"><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="{{ path('afficher_plateau', {partie:partie.id}) }}">Rejoindre la partie</a></li>
+                    </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-8 main-content">
+                <!--<p>Refer comment section below, to understand how the dropdown menu works using a one-line Jquery</p>-->
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-4 sidebar3">
+                <div class="left-navigation">
+                    <p class="text-left">Partie en tant que Joueur 2</p>
+                    {% for partie in partieJ2 %}
+                        <ul>
+                            <li class="text-left"><i class="fa fa-book" aria-hidden="true"></i>Partie numéro {{ partie.id }}</li>
+                            <li class="text-left"><i class="fa fa-bookmark-o" aria-hidden="true"></i>Votre adversaire est : {{ partie.joueur1.username }}</li>
+                            <li class="text-left"><i class="fa fa-bookmark-o" aria-hidden="true"></i><a href="{{ path('afficher_plateau', {partie:partie.id}) }}">Rejoindre la partie</a></li>
+                        </ul>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-8 main-content">
+                <!--<p>Refer comment section below, to understand how the dropdown menu works using a one-line Jquery</p>-->
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
